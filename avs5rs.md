@@ -851,7 +851,7 @@ RETURNED Выполнен возврат билета. Данный статус
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Response success="true">
-/Response>
+</Response>
 ```
 
 
