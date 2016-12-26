@@ -5,39 +5,55 @@ package com.artmark.avs5rs.model;
  * @since 07.07.2016 12:23
  */
 public enum TripTypeCode {
-	/**
-	 * Типа рейса - Междугородный
-	 */
-	INTERURBAN,
+    /**
+     * Типа рейса - Междугородный
+     */
+    @Deprecated
+    INTERURBAN,
 
-	/**
-	 * Типа рейса - Пригородный
-	 */
-	SUBURBAN,
+    /**
+     * Типа рейса - Пригородный
+     */
+    @Deprecated
+    SUBURBAN,
 
-	/**
-	 * Типа рейса - Международный
-	 */
-	INTERNATIONAL,
+    /**
+     * Типа рейса - Внутриобластной
+     */
+    @Deprecated
+    INTRAREGIONAL,
 
-	/**
-	 * Типа рейса - Внутриобластной
-	 */
-	INTRAREGIONAL,
 
-	/**
-	 * Типа рейса - Межобластной
-	 */
-	INTERREGIONAL,
+    /**
+     * Типа рейса - Межреспубликанский
+     */
+    @Deprecated
+    INTERREPUBLICAN,
 
-	/**
-	 * Типа рейса - Межреспубликанский
-	 */
-	INTERREPUBLICAN,
+    /**
+     * Типа рейса - Внутрирайонный
+     */
+    @Deprecated
+    INTRADISTRICT,
 
-	/**
-	 * Типа рейса - Внутрирайонный
-	 */
-	INTRADISTRICT,
-
+    /**
+     * Международный
+     */
+    INTERNATIONAL,
+    /**
+     * Межрегиональный
+     */
+    INTERREGIONAL,
+    /**
+     * Смежный межрегиональный.
+     */
+    ADJACENT_INTERREGIONAL,
+    /**
+     * Межмуниципальный.
+     */
+    INTERMUNICIPAL,
+    /**
+     * Муниципальный.
+     */
+    MUNICIPAL,
 }

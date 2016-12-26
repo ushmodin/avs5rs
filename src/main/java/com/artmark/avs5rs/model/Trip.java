@@ -2,6 +2,7 @@ package com.artmark.avs5rs.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
@@ -81,18 +82,6 @@ public class Trip {
 	 */
 	private String busInfo;
 
-	/**
-	 * Флаг обязательности ввода дополнительных персональных данных покупателя.
-	 * Основые персональные данные: Имя, Фамилия, Тип документа, Номер документа.
-	 * Дополнительные персональные данные: Отчество, Пол, Дата рождения, Гражданство.
-	 * Ввод дополнительных данных требуется во исполнение статьи 11 закона "О транспортной безопасности"
-	 * (с изменениями на 3 февраля 2014 года).
-	 * <p>
-	 * См. http://docs.cntd.ru/document/902027326
-	 *
-	 * Обязателен. Система не поддерживает, возвращать всегда true.
-	 */
-	private Boolean extDataRequired;
 
 	/**
 	 * тип рейса. Обязателен.
@@ -105,6 +94,9 @@ public class Trip {
 	 */
 	private TripStatusCode status;
 
+
+	@XmlElement(name = "class")
+	private TripClassCode clazz;
 
 	/**
 	 * Количество мест в автобусе. Обязателен.
@@ -220,14 +212,6 @@ public class Trip {
 		this.busInfo = busInfo;
 	}
 
-	public Boolean getExtDataRequired() {
-		return extDataRequired;
-	}
-
-	public void setExtDataRequired(Boolean extDataRequired) {
-		this.extDataRequired = extDataRequired;
-	}
-
 	public TripTypeCode getType() {
 		return type;
 	}
@@ -258,5 +242,13 @@ public class Trip {
 
 	public void setFreeSeatCount(Integer freeSeatCount) {
 		this.freeSeatCount = freeSeatCount;
+	}
+
+	public TripClassCode getClazz() {
+		return clazz;
+	}
+
+	public void setClazz(TripClassCode clazz) {
+		this.clazz = clazz;
 	}
 }
