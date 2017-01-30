@@ -652,6 +652,10 @@ XML-ответ сервиса, реализующего протокол в об
             FEMALE - Женский
             -->
             <gender>MALE</gender>
+            <!--
+            Дополнительная произвольная информация. Не обязательно.
+            -->
+            <info>NjaqSdsD SDdsqlkr JFn</info>
        </Passenger>
     </Sale>
     <!-- Агент выполнивший операцию. Не Обязателен. -->
@@ -769,6 +773,7 @@ RETURNED Выполнен возврат билета. Данный статус
                 <birthday>1985-01-01</birthday>
                 <citizenshipISO2>RU</citizenshipISO2>
                 <gender>MALE</gender>
+                <info>FewwLks Mq</info>
             </Passenger>
             <!-- Тариф (руб). Обязателен после подтверждения. -->
             <fare>0</fare>
@@ -918,6 +923,10 @@ bookOrder или updateTicket. Вызов этого метода означае
         FEMALE - Женский
         -->
         <gender>FEMALE</gender>
+        <!--
+         Дополнительная произвольная информация. Не обязательно.
+        -->
+        <info></info>
     </Passenger>
     <!-- Агент выполнивший операцию. Не Обязателен. -->
     <Agent>

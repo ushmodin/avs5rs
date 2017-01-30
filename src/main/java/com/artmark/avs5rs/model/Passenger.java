@@ -67,6 +67,11 @@ public class Passenger {
 	 */
 	protected Gender gender;
 
+	/**
+	 * Дополнительная информация. Лимит: 32 символа
+	 */
+	protected String info;
+
 	public String getLastName() {
 		return lastName;
 	}
@@ -145,5 +150,13 @@ public class Passenger {
 
 	public void setGender(Gender gender) {
 		this.gender = gender;
+	}
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
 	}
 }
