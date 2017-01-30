@@ -26,6 +26,11 @@ public class Trip {
 	private String num;
 
 	/**
+	 * Идентификатор маршрута. Не обязательно.
+	 */
+	private String routeId;
+
+	/**
 	 * Название маршрута. Обязателен.
 	 */
 	private String name;
@@ -250,5 +255,13 @@ public class Trip {
 
 	public void setClazz(TripClassCode clazz) {
 		this.clazz = clazz;
+	}
+
+	public String getRouteId() {
+		return routeId;
+	}
+
+	public void setRouteId(String routeId) {
+		this.routeId = routeId;
 	}
 }
