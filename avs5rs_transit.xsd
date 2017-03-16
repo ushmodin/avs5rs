@@ -84,6 +84,7 @@
                 <xs:element name="routeKey" type="RouteKey"/>
                 <xs:element name="dispatchStationUid" type="UidType"/>
                 <xs:element name="arrivalStationUid" type="UidType"/>
+                <xs:element name="date" type="xs:date"/>
                 <xs:element name="seatsCount" type="xs:integer"/>
                 <xs:element name="Agent" type="Agent" minOccurs="1"/>
             </xs:sequence>
