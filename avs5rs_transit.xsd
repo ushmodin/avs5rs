@@ -91,7 +91,7 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:complexType name="TransitSeat">
+    <xs:complexType name="TransitTicket">
         <xs:sequence>
             <xs:element name="ticketId" type="IDType" minOccurs="1"/>
             <xs:element name="seatNum" type="xs:int" minOccurs="1"/>
@@ -106,7 +106,7 @@
                         <xs:element name="Body">
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="TransitSeat" type="TransitSeat" minOccurs="1" maxOccurs="unbounded"/>
+                                    <xs:element name="TransitTicket" type="TransitTicket" minOccurs="1" maxOccurs="unbounded"/>
                                 </xs:sequence>
                             </xs:complexType>
                         </xs:element>
