@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           attributeFormDefault="qualified">
+
+	<xs:simpleType name="IDType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="36"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="NameType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="OkatoType">
+		<xs:restriction base="xs:string">
+			<xs:length value="11"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="InnType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="12"/>
+			<xs:minLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="SimpleStringType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"/>
+			<xs:minLength value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:complexType name="AbstractResponse">
+		<xs:sequence>
+			<xs:element name="Error" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="code" type="xs:string" minOccurs="1"/>
+						<xs:element name="message" type="xs:string" minOccurs="1"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="UidType">
+		<xs:restriction base="xs:string">
+			<xs:length value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="RouteKey">
+		<xs:sequence>
+			<xs:element name="dispatchStationUid" type="UidType"/>
+			<xs:element name="arrivalStationUid" type="UidType"/>
+			<xs:element name="dispatchTime" type="xs:time"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Agent">
+		<xs:sequence>
+			<xs:element name="name" type="NameType" minOccurs="0"/>
+			<xs:element name="inn" type="InnType" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+</xs:schema>

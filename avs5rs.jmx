@@ -30,7 +30,7 @@
           <collectionProp name="Arguments.arguments">
             <elementProp name="server" elementType="Argument">
               <stringProp name="Argument.name">server</stringProp>
-              <stringProp name="Argument.value">http://localhost:8080/avs5/soap/rs</stringProp>
+              <stringProp name="Argument.value"></stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="user" elementType="Argument">
@@ -45,16 +45,11 @@
             </elementProp>
             <elementProp name="date" elementType="Argument">
               <stringProp name="Argument.name">date</stringProp>
-              <stringProp name="Argument.value">2016-07-12</stringProp>
+              <stringProp name="Argument.value">2017-03-14</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
         </Arguments>
-        <hashTree/>
-        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
-          <collectionProp name="CookieManager.cookies"/>
-          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
-        </CookieManager>
         <hashTree/>
         <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -66,7 +61,8 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${__V(server)}</stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
           <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
         </ConfigTestElement>
         <hashTree/>
@@ -124,18 +120,9 @@
         <hashTree>
           <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
           <hashTree/>
-          <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-            <boolProp name="XPath.negate">false</boolProp>
-            <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-            <boolProp name="XPath.validate">false</boolProp>
-            <boolProp name="XPath.whitespace">false</boolProp>
-            <boolProp name="XPath.tolerant">false</boolProp>
-            <boolProp name="XPath.namespace">false</boolProp>
-          </XPathAssertion>
-          <hashTree/>
           <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Проверка ответа" enabled="true">
             <boolProp name="XPath.negate">false</boolProp>
-            <stringProp name="XPath.xpath">/Response/Body/message/text()=&apos;Test&apos;</stringProp>
+            <stringProp name="XPath.xpath">/EchoResponse/Body/message/text()=&apos;Test&apos;</stringProp>
             <boolProp name="XPath.validate">false</boolProp>
             <boolProp name="XPath.whitespace">false</boolProp>
             <boolProp name="XPath.tolerant">false</boolProp>
@@ -174,18 +161,9 @@
         <hashTree>
           <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
           <hashTree/>
-          <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-            <boolProp name="XPath.negate">false</boolProp>
-            <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-            <boolProp name="XPath.validate">false</boolProp>
-            <boolProp name="XPath.whitespace">false</boolProp>
-            <boolProp name="XPath.tolerant">false</boolProp>
-            <boolProp name="XPath.namespace">false</boolProp>
-          </XPathAssertion>
-          <hashTree/>
           <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во станций &gt; 0" enabled="true">
             <boolProp name="XPath.negate">false</boolProp>
-            <stringProp name="XPath.xpath">count(/Response/Body/Station)&gt;0</stringProp>
+            <stringProp name="XPath.xpath">count(/GetDispatchStationsResponse/Body/Station)&gt;0</stringProp>
             <boolProp name="XPath.validate">false</boolProp>
             <boolProp name="XPath.whitespace">false</boolProp>
             <boolProp name="XPath.tolerant">false</boolProp>
@@ -195,7 +173,7 @@
           <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID станций" enabled="true">
             <stringProp name="XPathExtractor.default"></stringProp>
             <stringProp name="XPathExtractor.refname">dispatchStationIds</stringProp>
-            <stringProp name="XPathExtractor.xpathQuery">/Response/Body/Station/id</stringProp>
+            <stringProp name="XPathExtractor.xpathQuery">/GetDispatchStationsResponse/Body/Station/id</stringProp>
             <boolProp name="XPathExtractor.validate">false</boolProp>
             <boolProp name="XPathExtractor.tolerant">false</boolProp>
             <boolProp name="XPathExtractor.namespace">false</boolProp>
@@ -240,18 +218,9 @@
           <hashTree>
             <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
             <hashTree/>
-            <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-              <boolProp name="XPath.negate">false</boolProp>
-              <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-              <boolProp name="XPath.validate">false</boolProp>
-              <boolProp name="XPath.whitespace">false</boolProp>
-              <boolProp name="XPath.tolerant">false</boolProp>
-              <boolProp name="XPath.namespace">false</boolProp>
-            </XPathAssertion>
-            <hashTree/>
             <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во станций &gt; 0" enabled="true">
               <boolProp name="XPath.negate">false</boolProp>
-              <stringProp name="XPath.xpath">count(/Response/Body/Station)&gt;0</stringProp>
+              <stringProp name="XPath.xpath">count(/GetArrivalStationsResponse/Body/Station)&gt;0</stringProp>
               <boolProp name="XPath.validate">false</boolProp>
               <boolProp name="XPath.whitespace">false</boolProp>
               <boolProp name="XPath.tolerant">false</boolProp>
@@ -261,7 +230,7 @@
             <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID станций" enabled="true">
               <stringProp name="XPathExtractor.default"></stringProp>
               <stringProp name="XPathExtractor.refname">arrivalStationIds</stringProp>
-              <stringProp name="XPathExtractor.xpathQuery">/Response/Body/Station/id</stringProp>
+              <stringProp name="XPathExtractor.xpathQuery">/GetArrivalStationsResponse/Body/Station/id</stringProp>
               <boolProp name="XPathExtractor.validate">false</boolProp>
               <boolProp name="XPathExtractor.tolerant">false</boolProp>
               <boolProp name="XPathExtractor.namespace">false</boolProp>
@@ -309,19 +278,10 @@
             <hashTree>
               <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
               <hashTree/>
-              <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                <boolProp name="XPath.negate">false</boolProp>
-                <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                <boolProp name="XPath.validate">false</boolProp>
-                <boolProp name="XPath.whitespace">false</boolProp>
-                <boolProp name="XPath.tolerant">false</boolProp>
-                <boolProp name="XPath.namespace">false</boolProp>
-              </XPathAssertion>
-              <hashTree/>
               <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID рейсов" enabled="true">
                 <stringProp name="XPathExtractor.default"></stringProp>
                 <stringProp name="XPathExtractor.refname">tripIds</stringProp>
-                <stringProp name="XPathExtractor.xpathQuery">/Response/Body/Trip/id</stringProp>
+                <stringProp name="XPathExtractor.xpathQuery">/SearchTripsResponse/Body/Trip/id</stringProp>
                 <boolProp name="XPathExtractor.validate">false</boolProp>
                 <boolProp name="XPathExtractor.tolerant">false</boolProp>
                 <boolProp name="XPathExtractor.namespace">false</boolProp>
@@ -367,18 +327,53 @@
               <hashTree>
                 <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
                 <hashTree/>
-                <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
+                <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во остановок &gt; 0" enabled="true">
                   <boolProp name="XPath.negate">false</boolProp>
-                  <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
+                  <stringProp name="XPath.xpath">count(/GetTripStopsResponse/Body/Stop)&gt;0</stringProp>
                   <boolProp name="XPath.validate">false</boolProp>
                   <boolProp name="XPath.whitespace">false</boolProp>
                   <boolProp name="XPath.tolerant">false</boolProp>
                   <boolProp name="XPath.namespace">false</boolProp>
                 </XPathAssertion>
                 <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Запрос типов билетов" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+&lt;GetTicketTypesRequest&gt;&#xd;
+	&lt;tripId&gt;${tripId}&lt;/tripId&gt;&#xd;
+	&lt;dispatchStationId&gt;${dispatchStationId}&lt;/dispatchStationId&gt;&#xd;
+	&lt;arrivalStationId&gt;${arrivalStationId}&lt;/arrivalStationId&gt;	&#xd;
+&lt;/GetTicketTypesRequest&gt;</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">${__V(server)}/sales/getTicketTypes</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <boolProp name="HTTPSampler.monitor">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                <hashTree/>
                 <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во типов билетов &gt; 0" enabled="true">
                   <boolProp name="XPath.negate">false</boolProp>
-                  <stringProp name="XPath.xpath">count(/Response/Body/TicketType)&gt;0</stringProp>
+                  <stringProp name="XPath.xpath">count(/GetTicketTypesResponse/Body/TicketType)&gt;0</stringProp>
                   <boolProp name="XPath.validate">false</boolProp>
                   <boolProp name="XPath.whitespace">false</boolProp>
                   <boolProp name="XPath.tolerant">false</boolProp>
@@ -388,7 +383,69 @@
                 <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID типов билетов" enabled="true">
                   <stringProp name="XPathExtractor.default"></stringProp>
                   <stringProp name="XPathExtractor.refname">ticketTypeIds</stringProp>
-                  <stringProp name="XPathExtractor.xpathQuery">/Response/Body/TicketType/id</stringProp>
+                  <stringProp name="XPathExtractor.xpathQuery">/GetTicketTypesResponse/Body/TicketType/id</stringProp>
+                  <boolProp name="XPathExtractor.validate">false</boolProp>
+                  <boolProp name="XPathExtractor.tolerant">false</boolProp>
+                  <boolProp name="XPathExtractor.namespace">false</boolProp>
+                </XPathExtractor>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Запрос типов документов" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+&lt;GetDocumentTypesRequest&gt;&#xd;
+	&lt;tripId&gt;${tripId}&lt;/tripId&gt;&#xd;
+	&lt;dispatchStationId&gt;${dispatchStationId}&lt;/dispatchStationId&gt;&#xd;
+	&lt;arrivalStationId&gt;${arrivalStationId}&lt;/arrivalStationId&gt;	&#xd;
+&lt;/GetDocumentTypesRequest&gt;</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">${__V(server)}/sales/getDocumentTypes</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <boolProp name="HTTPSampler.monitor">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                <hashTree/>
+                <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во типов документов &gt; 0" enabled="true">
+                  <boolProp name="XPath.negate">false</boolProp>
+                  <stringProp name="XPath.xpath">count(/GetDocumentTypesResponse/Body/DocumentType)&gt;0</stringProp>
+                  <boolProp name="XPath.validate">false</boolProp>
+                  <boolProp name="XPath.whitespace">false</boolProp>
+                  <boolProp name="XPath.tolerant">false</boolProp>
+                  <boolProp name="XPath.namespace">false</boolProp>
+                </XPathAssertion>
+                <hashTree/>
+                <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Среди документов есть паспорт" enabled="true">
+                  <boolProp name="XPath.negate">false</boolProp>
+                  <stringProp name="XPath.xpath">count(/GetDocumentTypesResponse/Body/DocumentType/id[text()=&apos;00&apos; or text()=&apos;0&apos;]) &gt; 0</stringProp>
+                  <boolProp name="XPath.validate">false</boolProp>
+                  <boolProp name="XPath.whitespace">false</boolProp>
+                  <boolProp name="XPath.tolerant">false</boolProp>
+                  <boolProp name="XPath.namespace">false</boolProp>
+                </XPathAssertion>
+                <hashTree/>
+                <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID типов документов" enabled="true">
+                  <stringProp name="XPathExtractor.default"></stringProp>
+                  <stringProp name="XPathExtractor.refname">documentTypeIds</stringProp>
+                  <stringProp name="XPathExtractor.xpathQuery">/GetDocumentTypesResponse/Body/DocumentType/id[text()=&apos;00&apos; or text()=&apos;0&apos;]/text()</stringProp>
                   <boolProp name="XPathExtractor.validate">false</boolProp>
                   <boolProp name="XPathExtractor.tolerant">false</boolProp>
                   <boolProp name="XPathExtractor.namespace">false</boolProp>
@@ -431,163 +488,23 @@
                 <hashTree>
                   <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
                   <hashTree/>
-                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                    <boolProp name="XPath.negate">false</boolProp>
-                    <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                    <boolProp name="XPath.validate">false</boolProp>
-                    <boolProp name="XPath.whitespace">false</boolProp>
-                    <boolProp name="XPath.tolerant">false</boolProp>
-                    <boolProp name="XPath.namespace">false</boolProp>
-                  </XPathAssertion>
-                  <hashTree/>
                   <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID мест" enabled="true">
                     <stringProp name="XPathExtractor.default"></stringProp>
-                    <stringProp name="XPathExtractor.refname">seatIds</stringProp>
-                    <stringProp name="XPathExtractor.xpathQuery">/Response/Body/Seat/id</stringProp>
+                    <stringProp name="XPathExtractor.refname">seatId</stringProp>
+                    <stringProp name="XPathExtractor.xpathQuery">/GetFreeSeatsResponse/Body/Seat/id</stringProp>
                     <boolProp name="XPathExtractor.validate">false</boolProp>
                     <boolProp name="XPathExtractor.tolerant">false</boolProp>
                     <boolProp name="XPathExtractor.namespace">false</boolProp>
                   </XPathExtractor>
                   <hashTree/>
                 </hashTree>
-                <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Для каждого свободного месте" enabled="true">
-                  <stringProp name="ForeachController.inputVal">seatIds</stringProp>
-                  <stringProp name="ForeachController.returnVal">seatId</stringProp>
-                  <boolProp name="ForeachController.useSeparator">true</boolProp>
-                  <stringProp name="ForeachController.endIndex">1</stringProp>
-                </ForeachController>
-                <hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Запрос типов билетов" enabled="true">
-                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                      <collectionProp name="Arguments.arguments">
-                        <elementProp name="" elementType="HTTPArgument">
-                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
-&lt;GetTicketTypesRequest&gt;&#xd;
-	&lt;tripId&gt;${tripId}&lt;/tripId&gt;&#xd;
-	&lt;dispatchStationId&gt;${dispatchStationId}&lt;/dispatchStationId&gt;&#xd;
-	&lt;arrivalStationId&gt;${arrivalStationId}&lt;/arrivalStationId&gt;	&#xd;
-&lt;/GetTicketTypesRequest&gt;</stringProp>
-                          <stringProp name="Argument.metadata">=</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </elementProp>
-                    <stringProp name="HTTPSampler.domain"></stringProp>
-                    <stringProp name="HTTPSampler.port"></stringProp>
-                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.protocol"></stringProp>
-                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">${__V(server)}/sales/getTicketTypes</stringProp>
-                    <stringProp name="HTTPSampler.method">POST</stringProp>
-                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                    <boolProp name="HTTPSampler.monitor">false</boolProp>
-                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  </HTTPSamplerProxy>
-                  <hashTree>
-                    <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во типов билетов &gt; 0" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">count(/Response/Body/TicketType)&gt;0</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID типов билетов" enabled="true">
-                      <stringProp name="XPathExtractor.default"></stringProp>
-                      <stringProp name="XPathExtractor.refname">ticketTypeIds</stringProp>
-                      <stringProp name="XPathExtractor.xpathQuery">/Response/Body/TicketType/id</stringProp>
-                      <boolProp name="XPathExtractor.validate">false</boolProp>
-                      <boolProp name="XPathExtractor.tolerant">false</boolProp>
-                      <boolProp name="XPathExtractor.namespace">false</boolProp>
-                    </XPathExtractor>
-                    <hashTree/>
-                  </hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Запрос типов документов" enabled="true">
-                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                      <collectionProp name="Arguments.arguments">
-                        <elementProp name="" elementType="HTTPArgument">
-                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
-&lt;GetDocumentTypesRequest&gt;&#xd;
-	&lt;tripId&gt;${tripId}&lt;/tripId&gt;&#xd;
-	&lt;dispatchStationId&gt;${dispatchStationId}&lt;/dispatchStationId&gt;&#xd;
-	&lt;arrivalStationId&gt;${arrivalStationId}&lt;/arrivalStationId&gt;	&#xd;
-&lt;/GetDocumentTypesRequest&gt;</stringProp>
-                          <stringProp name="Argument.metadata">=</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </elementProp>
-                    <stringProp name="HTTPSampler.domain"></stringProp>
-                    <stringProp name="HTTPSampler.port"></stringProp>
-                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.protocol"></stringProp>
-                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">${__V(server)}/sales/getDocumentTypes</stringProp>
-                    <stringProp name="HTTPSampler.method">POST</stringProp>
-                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                    <boolProp name="HTTPSampler.monitor">false</boolProp>
-                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  </HTTPSamplerProxy>
-                  <hashTree>
-                    <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во типов документов &gt; 0" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">count(/Response/Body/DocumentType)&gt;0</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID типов документов" enabled="true">
-                      <stringProp name="XPathExtractor.default"></stringProp>
-                      <stringProp name="XPathExtractor.refname">documentTypeIds</stringProp>
-                      <stringProp name="XPathExtractor.xpathQuery">/Response/Body/DocumentType/id</stringProp>
-                      <boolProp name="XPathExtractor.validate">false</boolProp>
-                      <boolProp name="XPathExtractor.tolerant">false</boolProp>
-                      <boolProp name="XPathExtractor.namespace">false</boolProp>
-                    </XPathExtractor>
-                    <hashTree/>
-                  </hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Создание договора" enabled="true">
-                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                      <collectionProp name="Arguments.arguments">
-                        <elementProp name="" elementType="HTTPArgument">
-                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Создание договора" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
 &lt;BookOrderRequest&gt;&#xd;
 	&lt;tripId&gt;${tripId}&lt;/tripId&gt;&#xd;
 	&lt;dispatchStationId&gt;${dispatchStationId}&lt;/dispatchStationId&gt;&#xd;
@@ -599,8 +516,8 @@
 			&lt;firstName&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/firstName&gt;&#xd;
 			&lt;lastName&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/lastName&gt;&#xd;
 			&lt;middleName&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/middleName&gt;			&#xd;
-			&lt;docNum&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/docNum&gt;			&#xd;
-			&lt;docSeries&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/docSeries&gt;			&#xd;
+			&lt;docNum&gt;${__RandomString(6,0123456789)}&lt;/docNum&gt;			&#xd;
+			&lt;docSeries&gt;${__RandomString(4,0123456789)}&lt;/docSeries&gt;			&#xd;
 			&lt;docTypeId&gt;${documentTypeIds_1}&lt;/docTypeId&gt;			&#xd;
 			&lt;birthday&gt;1985-01-01&lt;/birthday&gt;&#xd;
 			&lt;citizenshipISO2&gt;RU&lt;/citizenshipISO2&gt;&#xd;
@@ -608,316 +525,261 @@
 		&lt;/Passenger&gt;&#xd;
 	&lt;/Sale&gt;	&#xd;
 &lt;/BookOrderRequest&gt;</stringProp>
-                          <stringProp name="Argument.metadata">=</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </elementProp>
-                    <stringProp name="HTTPSampler.domain"></stringProp>
-                    <stringProp name="HTTPSampler.port"></stringProp>
-                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.protocol"></stringProp>
-                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">${__V(server)}/sales/bookOrder</stringProp>
-                    <stringProp name="HTTPSampler.method">POST</stringProp>
-                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                    <boolProp name="HTTPSampler.monitor">false</boolProp>
-                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  </HTTPSamplerProxy>
-                  <hashTree>
-                    <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID договора" enabled="true">
-                      <stringProp name="XPathExtractor.default"></stringProp>
-                      <stringProp name="XPathExtractor.refname">orderId</stringProp>
-                      <stringProp name="XPathExtractor.xpathQuery">/Response/Body/orderId</stringProp>
-                      <boolProp name="XPathExtractor.validate">false</boolProp>
-                      <boolProp name="XPathExtractor.tolerant">false</boolProp>
-                      <boolProp name="XPathExtractor.namespace">false</boolProp>
-                    </XPathExtractor>
-                    <hashTree/>
-                  </hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Запрос информации по договору" enabled="true">
-                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                      <collectionProp name="Arguments.arguments">
-                        <elementProp name="" elementType="HTTPArgument">
-                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">${__V(server)}/sales/bookOrder</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <hashTree/>
+                  <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID договора" enabled="true">
+                    <stringProp name="XPathExtractor.default"></stringProp>
+                    <stringProp name="XPathExtractor.refname">orderId</stringProp>
+                    <stringProp name="XPathExtractor.xpathQuery">/BookOrderResponse/Body/orderId</stringProp>
+                    <boolProp name="XPathExtractor.validate">false</boolProp>
+                    <boolProp name="XPathExtractor.tolerant">false</boolProp>
+                    <boolProp name="XPathExtractor.namespace">false</boolProp>
+                  </XPathExtractor>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Запрос информации по договору" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
 &lt;GetOrderRequest&gt;&#xd;
 	&lt;orderId&gt;${orderId}&lt;/orderId&gt;&#xd;
 &lt;/GetOrderRequest&gt;</stringProp>
-                          <stringProp name="Argument.metadata">=</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </elementProp>
-                    <stringProp name="HTTPSampler.domain"></stringProp>
-                    <stringProp name="HTTPSampler.port"></stringProp>
-                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.protocol"></stringProp>
-                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">${__V(server)}/sales/getOrder</stringProp>
-                    <stringProp name="HTTPSampler.method">POST</stringProp>
-                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                    <boolProp name="HTTPSampler.monitor">false</boolProp>
-                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  </HTTPSamplerProxy>
-                  <hashTree>
-                    <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">count(/Response/Body/Ticket)=1</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID билета" enabled="true">
-                      <stringProp name="XPathExtractor.default"></stringProp>
-                      <stringProp name="XPathExtractor.refname">ticketId</stringProp>
-                      <stringProp name="XPathExtractor.xpathQuery">/Response/Body/Ticket/id</stringProp>
-                      <boolProp name="XPathExtractor.validate">false</boolProp>
-                      <boolProp name="XPathExtractor.tolerant">false</boolProp>
-                      <boolProp name="XPathExtractor.namespace">false</boolProp>
-                    </XPathExtractor>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/Body/Ticket/status/text()=&apos;RESERVED&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Страна" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/Body/Ticket/Passenger/citizenshipISO2/text()=&apos;RU&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                  </hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Изменения данных пассажира" enabled="true">
-                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                      <collectionProp name="Arguments.arguments">
-                        <elementProp name="" elementType="HTTPArgument">
-                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">${__V(server)}/sales/getOrder</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">count(/GetOrderResponse/Body/Ticket)=1</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
+                  <hashTree/>
+                  <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID билета" enabled="true">
+                    <stringProp name="XPathExtractor.default"></stringProp>
+                    <stringProp name="XPathExtractor.refname">ticketId</stringProp>
+                    <stringProp name="XPathExtractor.xpathQuery">/GetOrderResponse/Body/Ticket/id</stringProp>
+                    <boolProp name="XPathExtractor.validate">false</boolProp>
+                    <boolProp name="XPathExtractor.tolerant">false</boolProp>
+                    <boolProp name="XPathExtractor.namespace">false</boolProp>
+                  </XPathExtractor>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">/GetOrderResponse/Body/Ticket/status/text()=&apos;RESERVED&apos;</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Страна" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">/GetOrderResponse/Body/Ticket/Passenger/citizenshipISO2/text()=&apos;RU&apos;</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Изменения данных пассажира" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
 &lt;UpdateTicketRequest&gt;&#xd;
 	&lt;ticketId&gt;${ticketId}&lt;/ticketId&gt;&#xd;
 	&lt;Passenger&gt;&#xd;
 		&lt;firstName&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/firstName&gt;&#xd;
 		&lt;lastName&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/lastName&gt;&#xd;
 		&lt;middleName&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/middleName&gt;			&#xd;
-		&lt;docNum&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/docNum&gt;			&#xd;
-		&lt;docSeries&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/docSeries&gt;			&#xd;
+		&lt;docNum&gt;${__RandomString(6,0123456789)}&lt;/docNum&gt;			&#xd;
+		&lt;docSeries&gt;${__RandomString(4,0123456789)}&lt;/docSeries&gt;			&#xd;
 		&lt;docTypeId&gt;${documentTypeIds_1}&lt;/docTypeId&gt;			&#xd;
 		&lt;birthday&gt;1986-01-01&lt;/birthday&gt;&#xd;
 		&lt;citizenshipISO2&gt;RU&lt;/citizenshipISO2&gt;&#xd;
 		&lt;gender&gt;FEMALE&lt;/gender&gt;&#xd;
 	&lt;/Passenger&gt;&#xd;
 &lt;/UpdateTicketRequest&gt;</stringProp>
-                          <stringProp name="Argument.metadata">=</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </elementProp>
-                    <stringProp name="HTTPSampler.domain"></stringProp>
-                    <stringProp name="HTTPSampler.port"></stringProp>
-                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.protocol"></stringProp>
-                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">${__V(server)}/sales/updateTicket</stringProp>
-                    <stringProp name="HTTPSampler.method">POST</stringProp>
-                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                    <boolProp name="HTTPSampler.monitor">false</boolProp>
-                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  </HTTPSamplerProxy>
-                  <hashTree>
-                    <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                  </hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Подтверждение оплаты" enabled="true">
-                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                      <collectionProp name="Arguments.arguments">
-                        <elementProp name="" elementType="HTTPArgument">
-                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">${__V(server)}/sales/updateTicket</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Подтверждение оплаты" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
 &lt;ConfirmOrderRequest&gt;&#xd;
 	&lt;orderId&gt;${orderId}&lt;/orderId&gt;&#xd;
 &lt;/ConfirmOrderRequest&gt;</stringProp>
-                          <stringProp name="Argument.metadata">=</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </elementProp>
-                    <stringProp name="HTTPSampler.domain"></stringProp>
-                    <stringProp name="HTTPSampler.port"></stringProp>
-                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.protocol"></stringProp>
-                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">${__V(server)}/sales/confirmOrder</stringProp>
-                    <stringProp name="HTTPSampler.method">POST</stringProp>
-                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                    <boolProp name="HTTPSampler.monitor">false</boolProp>
-                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  </HTTPSamplerProxy>
-                  <hashTree>
-                    <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">count(/Response/Body/Ticket)=1</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID билета" enabled="true">
-                      <stringProp name="XPathExtractor.default"></stringProp>
-                      <stringProp name="XPathExtractor.refname">orderId</stringProp>
-                      <stringProp name="XPathExtractor.xpathQuery">/Response/Body/Ticket/id</stringProp>
-                      <boolProp name="XPathExtractor.validate">false</boolProp>
-                      <boolProp name="XPathExtractor.tolerant">false</boolProp>
-                      <boolProp name="XPathExtractor.namespace">false</boolProp>
-                    </XPathExtractor>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/Body/Ticket/status/text()=&apos;SOLD&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                  </hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Отмена билета" enabled="true">
-                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                      <collectionProp name="Arguments.arguments">
-                        <elementProp name="" elementType="HTTPArgument">
-                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">${__V(server)}/sales/confirmOrder</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">count(/ConfirmOrderResponse/Body/Ticket)=1</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
+                  <hashTree/>
+                  <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID билета" enabled="true">
+                    <stringProp name="XPathExtractor.default"></stringProp>
+                    <stringProp name="XPathExtractor.refname">orderId</stringProp>
+                    <stringProp name="XPathExtractor.xpathQuery">/ConfirmOrderResponse/Body/Ticket/id</stringProp>
+                    <boolProp name="XPathExtractor.validate">false</boolProp>
+                    <boolProp name="XPathExtractor.tolerant">false</boolProp>
+                    <boolProp name="XPathExtractor.namespace">false</boolProp>
+                  </XPathExtractor>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">/ConfirmOrderResponse/Body/Ticket/status/text()=&apos;SOLD&apos;</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Отмена билета" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
 &lt;CancelTicketRequest&gt;&#xd;
 	&lt;ticketId&gt;${ticketId}&lt;/ticketId&gt;&#xd;
 &lt;/CancelTicketRequest&gt;</stringProp>
-                          <stringProp name="Argument.metadata">=</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </elementProp>
-                    <stringProp name="HTTPSampler.domain"></stringProp>
-                    <stringProp name="HTTPSampler.port"></stringProp>
-                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.protocol"></stringProp>
-                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">${__V(server)}/sales/cancelTicket</stringProp>
-                    <stringProp name="HTTPSampler.method">POST</stringProp>
-                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                    <boolProp name="HTTPSampler.monitor">false</boolProp>
-                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  </HTTPSamplerProxy>
-                  <hashTree>
-                    <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">count(/Response/Body/Ticket)=1</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID билета" enabled="true">
-                      <stringProp name="XPathExtractor.default"></stringProp>
-                      <stringProp name="XPathExtractor.refname">orderId</stringProp>
-                      <stringProp name="XPathExtractor.xpathQuery">/Response/Body/Ticket/id</stringProp>
-                      <boolProp name="XPathExtractor.validate">false</boolProp>
-                      <boolProp name="XPathExtractor.tolerant">false</boolProp>
-                      <boolProp name="XPathExtractor.namespace">false</boolProp>
-                    </XPathExtractor>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/Body/Ticket/status/text()=&apos;CANCELED&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                  </hashTree>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">${__V(server)}/sales/cancelTicket</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">count(/CancelTicketResponse/Body/Ticket)=1</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">/CancelTicketResponse/Body/Ticket/status/text()=&apos;CANCELED&apos;</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
+                  <hashTree/>
                 </hashTree>
               </hashTree>
               <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Бронирование, Подтверждение, Возврат" enabled="true"/>
@@ -956,163 +818,23 @@
                 <hashTree>
                   <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
                   <hashTree/>
-                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                    <boolProp name="XPath.negate">false</boolProp>
-                    <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                    <boolProp name="XPath.validate">false</boolProp>
-                    <boolProp name="XPath.whitespace">false</boolProp>
-                    <boolProp name="XPath.tolerant">false</boolProp>
-                    <boolProp name="XPath.namespace">false</boolProp>
-                  </XPathAssertion>
-                  <hashTree/>
                   <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID мест" enabled="true">
                     <stringProp name="XPathExtractor.default"></stringProp>
-                    <stringProp name="XPathExtractor.refname">seatIds</stringProp>
-                    <stringProp name="XPathExtractor.xpathQuery">/Response/Body/Seat/id</stringProp>
+                    <stringProp name="XPathExtractor.refname">seatId</stringProp>
+                    <stringProp name="XPathExtractor.xpathQuery">/GetFreeSeatsResponse/Body/Seat/id</stringProp>
                     <boolProp name="XPathExtractor.validate">false</boolProp>
                     <boolProp name="XPathExtractor.tolerant">false</boolProp>
                     <boolProp name="XPathExtractor.namespace">false</boolProp>
                   </XPathExtractor>
                   <hashTree/>
                 </hashTree>
-                <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Для каждого свободного месте" enabled="true">
-                  <stringProp name="ForeachController.inputVal">seatIds</stringProp>
-                  <stringProp name="ForeachController.returnVal">seatId</stringProp>
-                  <boolProp name="ForeachController.useSeparator">true</boolProp>
-                  <stringProp name="ForeachController.endIndex">1</stringProp>
-                </ForeachController>
-                <hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Запрос типов билетов" enabled="true">
-                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                      <collectionProp name="Arguments.arguments">
-                        <elementProp name="" elementType="HTTPArgument">
-                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
-&lt;GetTicketTypesRequest&gt;&#xd;
-	&lt;tripId&gt;${tripId}&lt;/tripId&gt;&#xd;
-	&lt;dispatchStationId&gt;${dispatchStationId}&lt;/dispatchStationId&gt;&#xd;
-	&lt;arrivalStationId&gt;${arrivalStationId}&lt;/arrivalStationId&gt;	&#xd;
-&lt;/GetTicketTypesRequest&gt;</stringProp>
-                          <stringProp name="Argument.metadata">=</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </elementProp>
-                    <stringProp name="HTTPSampler.domain"></stringProp>
-                    <stringProp name="HTTPSampler.port"></stringProp>
-                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.protocol"></stringProp>
-                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">${__V(server)}/sales/getTicketTypes</stringProp>
-                    <stringProp name="HTTPSampler.method">POST</stringProp>
-                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                    <boolProp name="HTTPSampler.monitor">false</boolProp>
-                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  </HTTPSamplerProxy>
-                  <hashTree>
-                    <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во типов билетов &gt; 0" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">count(/Response/Body/TicketType)&gt;0</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID типов билетов" enabled="true">
-                      <stringProp name="XPathExtractor.default"></stringProp>
-                      <stringProp name="XPathExtractor.refname">ticketTypeIds</stringProp>
-                      <stringProp name="XPathExtractor.xpathQuery">/Response/Body/TicketType/id</stringProp>
-                      <boolProp name="XPathExtractor.validate">false</boolProp>
-                      <boolProp name="XPathExtractor.tolerant">false</boolProp>
-                      <boolProp name="XPathExtractor.namespace">false</boolProp>
-                    </XPathExtractor>
-                    <hashTree/>
-                  </hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Запрос типов документов" enabled="true">
-                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                      <collectionProp name="Arguments.arguments">
-                        <elementProp name="" elementType="HTTPArgument">
-                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
-&lt;GetDocumentTypesRequest&gt;&#xd;
-	&lt;tripId&gt;${tripId}&lt;/tripId&gt;&#xd;
-	&lt;dispatchStationId&gt;${dispatchStationId}&lt;/dispatchStationId&gt;&#xd;
-	&lt;arrivalStationId&gt;${arrivalStationId}&lt;/arrivalStationId&gt;	&#xd;
-&lt;/GetDocumentTypesRequest&gt;</stringProp>
-                          <stringProp name="Argument.metadata">=</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </elementProp>
-                    <stringProp name="HTTPSampler.domain"></stringProp>
-                    <stringProp name="HTTPSampler.port"></stringProp>
-                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.protocol"></stringProp>
-                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">${__V(server)}/sales/getDocumentTypes</stringProp>
-                    <stringProp name="HTTPSampler.method">POST</stringProp>
-                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                    <boolProp name="HTTPSampler.monitor">false</boolProp>
-                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  </HTTPSamplerProxy>
-                  <hashTree>
-                    <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во типов документов &gt; 0" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">count(/Response/Body/DocumentType)&gt;0</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID типов документов" enabled="true">
-                      <stringProp name="XPathExtractor.default"></stringProp>
-                      <stringProp name="XPathExtractor.refname">documentTypeIds</stringProp>
-                      <stringProp name="XPathExtractor.xpathQuery">/Response/Body/DocumentType/id</stringProp>
-                      <boolProp name="XPathExtractor.validate">false</boolProp>
-                      <boolProp name="XPathExtractor.tolerant">false</boolProp>
-                      <boolProp name="XPathExtractor.namespace">false</boolProp>
-                    </XPathExtractor>
-                    <hashTree/>
-                  </hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Создание договора" enabled="true">
-                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                      <collectionProp name="Arguments.arguments">
-                        <elementProp name="" elementType="HTTPArgument">
-                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Создание договора" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
 &lt;BookOrderRequest&gt;&#xd;
 	&lt;tripId&gt;${tripId}&lt;/tripId&gt;&#xd;
 	&lt;dispatchStationId&gt;${dispatchStationId}&lt;/dispatchStationId&gt;&#xd;
@@ -1124,8 +846,8 @@
 			&lt;firstName&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/firstName&gt;&#xd;
 			&lt;lastName&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/lastName&gt;&#xd;
 			&lt;middleName&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/middleName&gt;			&#xd;
-			&lt;docNum&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/docNum&gt;			&#xd;
-			&lt;docSeries&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/docSeries&gt;			&#xd;
+			&lt;docNum&gt;${__RandomString(6,0123456789)}&lt;/docNum&gt;			&#xd;
+			&lt;docSeries&gt;${__RandomString(4,0123456789)}&lt;/docSeries&gt;			&#xd;
 			&lt;docTypeId&gt;${documentTypeIds_1}&lt;/docTypeId&gt;			&#xd;
 			&lt;birthday&gt;1985-01-01&lt;/birthday&gt;&#xd;
 			&lt;citizenshipISO2&gt;RU&lt;/citizenshipISO2&gt;&#xd;
@@ -1133,263 +855,261 @@
 		&lt;/Passenger&gt;&#xd;
 	&lt;/Sale&gt;	&#xd;
 &lt;/BookOrderRequest&gt;</stringProp>
-                          <stringProp name="Argument.metadata">=</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </elementProp>
-                    <stringProp name="HTTPSampler.domain"></stringProp>
-                    <stringProp name="HTTPSampler.port"></stringProp>
-                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.protocol"></stringProp>
-                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">${__V(server)}/sales/bookOrder</stringProp>
-                    <stringProp name="HTTPSampler.method">POST</stringProp>
-                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                    <boolProp name="HTTPSampler.monitor">false</boolProp>
-                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  </HTTPSamplerProxy>
-                  <hashTree>
-                    <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID договора" enabled="true">
-                      <stringProp name="XPathExtractor.default"></stringProp>
-                      <stringProp name="XPathExtractor.refname">orderId</stringProp>
-                      <stringProp name="XPathExtractor.xpathQuery">/Response/Body/orderId</stringProp>
-                      <boolProp name="XPathExtractor.validate">false</boolProp>
-                      <boolProp name="XPathExtractor.tolerant">false</boolProp>
-                      <boolProp name="XPathExtractor.namespace">false</boolProp>
-                    </XPathExtractor>
-                    <hashTree/>
-                  </hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Запрос информации по договору" enabled="true">
-                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                      <collectionProp name="Arguments.arguments">
-                        <elementProp name="" elementType="HTTPArgument">
-                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">${__V(server)}/sales/bookOrder</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <hashTree/>
+                  <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID договора" enabled="true">
+                    <stringProp name="XPathExtractor.default"></stringProp>
+                    <stringProp name="XPathExtractor.refname">orderId</stringProp>
+                    <stringProp name="XPathExtractor.xpathQuery">/BookOrderResponse/Body/orderId</stringProp>
+                    <boolProp name="XPathExtractor.validate">false</boolProp>
+                    <boolProp name="XPathExtractor.tolerant">false</boolProp>
+                    <boolProp name="XPathExtractor.namespace">false</boolProp>
+                  </XPathExtractor>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Запрос информации по договору" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
 &lt;GetOrderRequest&gt;&#xd;
 	&lt;orderId&gt;${orderId}&lt;/orderId&gt;&#xd;
 &lt;/GetOrderRequest&gt;</stringProp>
-                          <stringProp name="Argument.metadata">=</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </elementProp>
-                    <stringProp name="HTTPSampler.domain"></stringProp>
-                    <stringProp name="HTTPSampler.port"></stringProp>
-                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.protocol"></stringProp>
-                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">${__V(server)}/sales/getOrder</stringProp>
-                    <stringProp name="HTTPSampler.method">POST</stringProp>
-                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                    <boolProp name="HTTPSampler.monitor">false</boolProp>
-                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  </HTTPSamplerProxy>
-                  <hashTree>
-                    <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">count(/Response/Body/Ticket)=1</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID билета" enabled="true">
-                      <stringProp name="XPathExtractor.default"></stringProp>
-                      <stringProp name="XPathExtractor.refname">ticketId</stringProp>
-                      <stringProp name="XPathExtractor.xpathQuery">/Response/Body/Ticket/id</stringProp>
-                      <boolProp name="XPathExtractor.validate">false</boolProp>
-                      <boolProp name="XPathExtractor.tolerant">false</boolProp>
-                      <boolProp name="XPathExtractor.namespace">false</boolProp>
-                    </XPathExtractor>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/Body/Ticket/status/text()=&apos;RESERVED&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Страна" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/Body/Ticket/Passenger/citizenshipISO2/text()=&apos;RU&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                  </hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Подтверждение оплаты" enabled="true">
-                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                      <collectionProp name="Arguments.arguments">
-                        <elementProp name="" elementType="HTTPArgument">
-                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">${__V(server)}/sales/getOrder</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">count(/GetOrderResponse/Body/Ticket)=1</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
+                  <hashTree/>
+                  <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID билета" enabled="true">
+                    <stringProp name="XPathExtractor.default"></stringProp>
+                    <stringProp name="XPathExtractor.refname">ticketId</stringProp>
+                    <stringProp name="XPathExtractor.xpathQuery">/GetOrderResponse/Body/Ticket/id</stringProp>
+                    <boolProp name="XPathExtractor.validate">false</boolProp>
+                    <boolProp name="XPathExtractor.tolerant">false</boolProp>
+                    <boolProp name="XPathExtractor.namespace">false</boolProp>
+                  </XPathExtractor>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">/GetOrderResponse/Body/Ticket/status/text()=&apos;RESERVED&apos;</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Страна" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">/GetOrderResponse/Body/Ticket/Passenger/citizenshipISO2/text()=&apos;RU&apos;</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Изменения данных пассажира" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+&lt;UpdateTicketRequest&gt;&#xd;
+	&lt;ticketId&gt;${ticketId}&lt;/ticketId&gt;&#xd;
+	&lt;Passenger&gt;&#xd;
+		&lt;firstName&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/firstName&gt;&#xd;
+		&lt;lastName&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/lastName&gt;&#xd;
+		&lt;middleName&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/middleName&gt;			&#xd;
+		&lt;docNum&gt;${__RandomString(6,0123456789)}&lt;/docNum&gt;			&#xd;
+		&lt;docSeries&gt;${__RandomString(4,0123456789)}&lt;/docSeries&gt;			&#xd;
+		&lt;docTypeId&gt;${documentTypeIds_1}&lt;/docTypeId&gt;			&#xd;
+		&lt;birthday&gt;1986-01-01&lt;/birthday&gt;&#xd;
+		&lt;citizenshipISO2&gt;RU&lt;/citizenshipISO2&gt;&#xd;
+		&lt;gender&gt;FEMALE&lt;/gender&gt;&#xd;
+	&lt;/Passenger&gt;&#xd;
+&lt;/UpdateTicketRequest&gt;</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">${__V(server)}/sales/updateTicket</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Подтверждение оплаты" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
 &lt;ConfirmOrderRequest&gt;&#xd;
 	&lt;orderId&gt;${orderId}&lt;/orderId&gt;&#xd;
 &lt;/ConfirmOrderRequest&gt;</stringProp>
-                          <stringProp name="Argument.metadata">=</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </elementProp>
-                    <stringProp name="HTTPSampler.domain"></stringProp>
-                    <stringProp name="HTTPSampler.port"></stringProp>
-                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.protocol"></stringProp>
-                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">${__V(server)}/sales/confirmOrder</stringProp>
-                    <stringProp name="HTTPSampler.method">POST</stringProp>
-                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                    <boolProp name="HTTPSampler.monitor">false</boolProp>
-                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  </HTTPSamplerProxy>
-                  <hashTree>
-                    <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">count(/Response/Body/Ticket)=1</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID билета" enabled="true">
-                      <stringProp name="XPathExtractor.default"></stringProp>
-                      <stringProp name="XPathExtractor.refname">orderId</stringProp>
-                      <stringProp name="XPathExtractor.xpathQuery">/Response/Body/Ticket/id</stringProp>
-                      <boolProp name="XPathExtractor.validate">false</boolProp>
-                      <boolProp name="XPathExtractor.tolerant">false</boolProp>
-                      <boolProp name="XPathExtractor.namespace">false</boolProp>
-                    </XPathExtractor>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/Body/Ticket/status/text()=&apos;SOLD&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                  </hashTree>
-                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Возврат билета" enabled="true">
-                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                      <collectionProp name="Arguments.arguments">
-                        <elementProp name="" elementType="HTTPArgument">
-                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                          <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">${__V(server)}/sales/confirmOrder</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">count(/ConfirmOrderResponse/Body/Ticket)=1</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
+                  <hashTree/>
+                  <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID билета" enabled="true">
+                    <stringProp name="XPathExtractor.default"></stringProp>
+                    <stringProp name="XPathExtractor.refname">orderId</stringProp>
+                    <stringProp name="XPathExtractor.xpathQuery">/ConfirmOrderResponse/Body/Ticket/id</stringProp>
+                    <boolProp name="XPathExtractor.validate">false</boolProp>
+                    <boolProp name="XPathExtractor.tolerant">false</boolProp>
+                    <boolProp name="XPathExtractor.namespace">false</boolProp>
+                  </XPathExtractor>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">/ConfirmOrderResponse/Body/Ticket/status/text()=&apos;SOLD&apos;</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Возврат билета" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
 &lt;ReturnTicketRequest&gt;&#xd;
 	&lt;ticketId&gt;${ticketId}&lt;/ticketId&gt;&#xd;
 &lt;/ReturnTicketRequest&gt;</stringProp>
-                          <stringProp name="Argument.metadata">=</stringProp>
-                        </elementProp>
-                      </collectionProp>
-                    </elementProp>
-                    <stringProp name="HTTPSampler.domain"></stringProp>
-                    <stringProp name="HTTPSampler.port"></stringProp>
-                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                    <stringProp name="HTTPSampler.protocol"></stringProp>
-                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                    <stringProp name="HTTPSampler.path">${__V(server)}/sales/returnTicket</stringProp>
-                    <stringProp name="HTTPSampler.method">POST</stringProp>
-                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                    <boolProp name="HTTPSampler.monitor">false</boolProp>
-                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  </HTTPSamplerProxy>
-                  <hashTree>
-                    <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Ответ положительный?" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/@success=&apos;true&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">count(/Response/Body/Ticket)=1</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                    <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID билета" enabled="true">
-                      <stringProp name="XPathExtractor.default"></stringProp>
-                      <stringProp name="XPathExtractor.refname">orderId</stringProp>
-                      <stringProp name="XPathExtractor.xpathQuery">/Response/Body/Ticket/id</stringProp>
-                      <boolProp name="XPathExtractor.validate">false</boolProp>
-                      <boolProp name="XPathExtractor.tolerant">false</boolProp>
-                      <boolProp name="XPathExtractor.namespace">false</boolProp>
-                    </XPathExtractor>
-                    <hashTree/>
-                    <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
-                      <boolProp name="XPath.negate">false</boolProp>
-                      <stringProp name="XPath.xpath">/Response/Body/Ticket/status/text()=&apos;RETURNED&apos;</stringProp>
-                      <boolProp name="XPath.validate">false</boolProp>
-                      <boolProp name="XPath.whitespace">false</boolProp>
-                      <boolProp name="XPath.tolerant">false</boolProp>
-                      <boolProp name="XPath.namespace">false</boolProp>
-                    </XPathAssertion>
-                    <hashTree/>
-                  </hashTree>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">${__V(server)}/sales/returnTicket</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <boolProp name="HTTPSampler.monitor">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">count(/ReturnTicketResponse/Body/Ticket)=1</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">/ReturnTicketResponse/Body/Ticket/status/text()=&apos;RETURNED&apos;</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
+                  <hashTree/>
                 </hashTree>
               </hashTree>
             </hashTree>

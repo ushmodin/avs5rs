@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           attributeFormDefault="qualified">
+	<xs:import schemaLocation="avs5rs_sale.xsd" namespace=""/>
+	<xs:import schemaLocation="avs5rs_transit.xsd" namespace=""/>
+</xs:schema>
