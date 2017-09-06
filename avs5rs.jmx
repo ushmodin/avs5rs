@@ -12,7 +12,7 @@
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
@@ -28,24 +28,24 @@
       <hashTree>
         <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments">
-            <elementProp name="server" elementType="Argument">
-              <stringProp name="Argument.name">server</stringProp>
-              <stringProp name="Argument.value"></stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="user" elementType="Argument">
-              <stringProp name="Argument.name">user</stringProp>
-              <stringProp name="Argument.value"></stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
             <elementProp name="password" elementType="Argument">
               <stringProp name="Argument.name">password</stringProp>
-              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.value">${__P(password)}</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="date" elementType="Argument">
               <stringProp name="Argument.name">date</stringProp>
-              <stringProp name="Argument.value">2017-03-14</stringProp>
+              <stringProp name="Argument.value">${__P(date)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="user" elementType="Argument">
+              <stringProp name="Argument.name">user</stringProp>
+              <stringProp name="Argument.value">${__P(user)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="server" elementType="Argument">
+              <stringProp name="Argument.name">server</stringProp>
+              <stringProp name="Argument.value">${__P(server)}</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
@@ -88,6 +88,11 @@
           </collectionProp>
         </HeaderManager>
         <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+        </CookieManager>
+        <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="echo" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -107,7 +112,7 @@
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
           <stringProp name="HTTPSampler.path">${__V(server)}/sales/echo</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -118,7 +123,7 @@
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+          <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
           <hashTree/>
           <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Проверка ответа" enabled="true">
             <boolProp name="XPath.negate">false</boolProp>
@@ -159,7 +164,7 @@
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+          <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
           <hashTree/>
           <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во станций &gt; 0" enabled="true">
             <boolProp name="XPath.negate">false</boolProp>
@@ -216,16 +221,7 @@
             <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
-            <hashTree/>
-            <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во станций &gt; 0" enabled="true">
-              <boolProp name="XPath.negate">false</boolProp>
-              <stringProp name="XPath.xpath">count(/GetArrivalStationsResponse/Body/Station)&gt;0</stringProp>
-              <boolProp name="XPath.validate">false</boolProp>
-              <boolProp name="XPath.whitespace">false</boolProp>
-              <boolProp name="XPath.tolerant">false</boolProp>
-              <boolProp name="XPath.namespace">false</boolProp>
-            </XPathAssertion>
+            <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
             <hashTree/>
             <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID станций" enabled="true">
               <stringProp name="XPathExtractor.default"></stringProp>
@@ -243,7 +239,7 @@
             <boolProp name="ForeachController.useSeparator">true</boolProp>
           </ForeachController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="searchTrips" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="searchTrips" enabled="false">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -276,7 +272,7 @@
               <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+              <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
               <hashTree/>
               <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID рейсов" enabled="true">
                 <stringProp name="XPathExtractor.default"></stringProp>
@@ -288,7 +284,7 @@
               </XPathExtractor>
               <hashTree/>
             </hashTree>
-            <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Для каждого рейса" enabled="true">
+            <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Для каждого рейса" enabled="false">
               <stringProp name="ForeachController.inputVal">tripIds</stringProp>
               <stringProp name="ForeachController.returnVal">tripId</stringProp>
               <boolProp name="ForeachController.useSeparator">true</boolProp>
@@ -325,7 +321,7 @@
                 <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
               </HTTPSamplerProxy>
               <hashTree>
-                <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
                 <hashTree/>
                 <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во остановок &gt; 0" enabled="true">
                   <boolProp name="XPath.negate">false</boolProp>
@@ -369,7 +365,7 @@
                 <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
               </HTTPSamplerProxy>
               <hashTree>
-                <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
                 <hashTree/>
                 <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во типов билетов &gt; 0" enabled="true">
                   <boolProp name="XPath.negate">false</boolProp>
@@ -422,7 +418,7 @@
                 <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
               </HTTPSamplerProxy>
               <hashTree>
-                <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
                 <hashTree/>
                 <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во типов документов &gt; 0" enabled="true">
                   <boolProp name="XPath.negate">false</boolProp>
@@ -486,7 +482,7 @@
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
-                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
                   <hashTree/>
                   <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID мест" enabled="true">
                     <stringProp name="XPathExtractor.default"></stringProp>
@@ -496,6 +492,15 @@
                     <boolProp name="XPathExtractor.tolerant">false</boolProp>
                     <boolProp name="XPathExtractor.namespace">false</boolProp>
                   </XPathExtractor>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Есть места" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">count(/GetFreeSeatsResponse/Body/Seat)&gt;0</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
                   <hashTree/>
                 </hashTree>
                 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Создание договора" enabled="true">
@@ -510,7 +515,7 @@
 	&lt;dispatchStationId&gt;${dispatchStationId}&lt;/dispatchStationId&gt;&#xd;
 	&lt;arrivalStationId&gt;${arrivalStationId}&lt;/arrivalStationId&gt;	&#xd;
 	&lt;Sale&gt;&#xd;
-		&lt;seatId&gt;${seatId}&lt;/seatId&gt;&#xd;
+		&lt;seatId&gt;${__V(seatId_${__Random(1,${seatId_matchNr})})}&lt;/seatId&gt;&#xd;
 		&lt;ticketTypeId&gt;${ticketTypeIds_1}&lt;/ticketTypeId&gt;&#xd;
 		&lt;Passenger&gt;&#xd;
 			&lt;firstName&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/firstName&gt;&#xd;
@@ -545,7 +550,7 @@
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
-                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
                   <hashTree/>
                   <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID договора" enabled="true">
                     <stringProp name="XPathExtractor.default"></stringProp>
@@ -587,7 +592,7 @@
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
-                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
                   <hashTree/>
                   <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
                     <boolProp name="XPath.negate">false</boolProp>
@@ -667,7 +672,7 @@
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
-                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
                   <hashTree/>
                 </hashTree>
                 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Подтверждение оплаты" enabled="true">
@@ -700,7 +705,7 @@
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
-                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
                   <hashTree/>
                   <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
                     <boolProp name="XPath.negate">false</boolProp>
@@ -760,7 +765,7 @@
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
-                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
                   <hashTree/>
                   <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
                     <boolProp name="XPath.negate">false</boolProp>
@@ -816,7 +821,7 @@
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
-                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
                   <hashTree/>
                   <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID мест" enabled="true">
                     <stringProp name="XPathExtractor.default"></stringProp>
@@ -826,6 +831,15 @@
                     <boolProp name="XPathExtractor.tolerant">false</boolProp>
                     <boolProp name="XPathExtractor.namespace">false</boolProp>
                   </XPathExtractor>
+                  <hashTree/>
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Есть места" enabled="true">
+                    <boolProp name="XPath.negate">false</boolProp>
+                    <stringProp name="XPath.xpath">count(/GetFreeSeatsResponse/Body/Seat)&gt;1</stringProp>
+                    <boolProp name="XPath.validate">false</boolProp>
+                    <boolProp name="XPath.whitespace">false</boolProp>
+                    <boolProp name="XPath.tolerant">false</boolProp>
+                    <boolProp name="XPath.namespace">false</boolProp>
+                  </XPathAssertion>
                   <hashTree/>
                 </hashTree>
                 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Создание договора" enabled="true">
@@ -840,7 +854,7 @@
 	&lt;dispatchStationId&gt;${dispatchStationId}&lt;/dispatchStationId&gt;&#xd;
 	&lt;arrivalStationId&gt;${arrivalStationId}&lt;/arrivalStationId&gt;	&#xd;
 	&lt;Sale&gt;&#xd;
-		&lt;seatId&gt;${seatId}&lt;/seatId&gt;&#xd;
+		&lt;seatId&gt;${__V(seatId_${__Random(1,${seatId_matchNr})})}&lt;/seatId&gt;&#xd;
 		&lt;ticketTypeId&gt;${ticketTypeIds_1}&lt;/ticketTypeId&gt;&#xd;
 		&lt;Passenger&gt;&#xd;
 			&lt;firstName&gt;${__RandomString(10,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz)}&lt;/firstName&gt;&#xd;
@@ -875,7 +889,7 @@
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
-                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
                   <hashTree/>
                   <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить ID договора" enabled="true">
                     <stringProp name="XPathExtractor.default"></stringProp>
@@ -917,7 +931,7 @@
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
-                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
                   <hashTree/>
                   <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
                     <boolProp name="XPath.negate">false</boolProp>
@@ -997,7 +1011,7 @@
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
-                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
                   <hashTree/>
                 </hashTree>
                 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Подтверждение оплаты" enabled="true">
@@ -1030,7 +1044,7 @@
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
-                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
                   <hashTree/>
                   <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
                     <boolProp name="XPath.negate">false</boolProp>
@@ -1090,7 +1104,7 @@
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
-                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="true"/>
+                  <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
                   <hashTree/>
                   <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Кол-во билетов = 1" enabled="true">
                     <boolProp name="XPath.negate">false</boolProp>
@@ -1122,6 +1136,72 @@
         </DebugSampler>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
