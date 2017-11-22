@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -15,10 +15,10 @@
         <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
+          <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <longProp name="ThreadGroup.start_time">1467960198000</longProp>
         <longProp name="ThreadGroup.end_time">1467960198000</longProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
@@ -57,13 +57,12 @@
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path"></stringProp>
-          <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
-          <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
         </ConfigTestElement>
         <hashTree/>
         <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
@@ -91,6 +90,7 @@
         <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
           <collectionProp name="CookieManager.cookies"/>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
         </CookieManager>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="echo" enabled="true">
@@ -109,8 +109,6 @@
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
           <stringProp name="HTTPSampler.path">${__V(server)}/sales/echo</stringProp>
@@ -119,8 +117,9 @@
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -142,16 +141,13 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
-&lt;GetDispatchStationsRequest&gt;&#xd;
-&lt;/GetDispatchStationsRequest&gt;</stringProp>
+&lt;GetDispatchStationsRequest/&gt;</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
           <stringProp name="HTTPSampler.domain"></stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${__V(server)}/sales/getDispatchStations</stringProp>
@@ -160,8 +156,9 @@
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -182,6 +179,7 @@
             <boolProp name="XPathExtractor.validate">false</boolProp>
             <boolProp name="XPathExtractor.tolerant">false</boolProp>
             <boolProp name="XPathExtractor.namespace">false</boolProp>
+            <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
           </XPathExtractor>
           <hashTree/>
         </hashTree>
@@ -207,8 +205,6 @@
             </elementProp>
             <stringProp name="HTTPSampler.domain"></stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">${__V(server)}/sales/getArrivalStations</stringProp>
@@ -217,8 +213,9 @@
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
             <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <boolProp name="HTTPSampler.monitor">false</boolProp>
             <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
           <hashTree>
             <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -230,6 +227,7 @@
               <boolProp name="XPathExtractor.validate">false</boolProp>
               <boolProp name="XPathExtractor.tolerant">false</boolProp>
               <boolProp name="XPathExtractor.namespace">false</boolProp>
+              <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
             </XPathExtractor>
             <hashTree/>
           </hashTree>
@@ -239,7 +237,7 @@
             <boolProp name="ForeachController.useSeparator">true</boolProp>
           </ForeachController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="searchTrips" enabled="false">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="searchTrips" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -258,8 +256,6 @@
               </elementProp>
               <stringProp name="HTTPSampler.domain"></stringProp>
               <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
               <stringProp name="HTTPSampler.path">${__V(server)}/sales/searchTrips</stringProp>
@@ -268,8 +264,9 @@
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
               <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
               <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <boolProp name="HTTPSampler.monitor">false</boolProp>
               <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
             </HTTPSamplerProxy>
             <hashTree>
               <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -281,10 +278,11 @@
                 <boolProp name="XPathExtractor.validate">false</boolProp>
                 <boolProp name="XPathExtractor.tolerant">false</boolProp>
                 <boolProp name="XPathExtractor.namespace">false</boolProp>
+                <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
               </XPathExtractor>
               <hashTree/>
             </hashTree>
-            <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Для каждого рейса" enabled="false">
+            <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Для каждого рейса" enabled="true">
               <stringProp name="ForeachController.inputVal">tripIds</stringProp>
               <stringProp name="ForeachController.returnVal">tripId</stringProp>
               <boolProp name="ForeachController.useSeparator">true</boolProp>
@@ -307,8 +305,6 @@
                 </elementProp>
                 <stringProp name="HTTPSampler.domain"></stringProp>
                 <stringProp name="HTTPSampler.port"></stringProp>
-                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
                 <stringProp name="HTTPSampler.path">${__V(server)}/sales/getTripStops</stringProp>
@@ -317,8 +313,9 @@
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                 <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                 <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                <boolProp name="HTTPSampler.monitor">false</boolProp>
                 <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
               </HTTPSamplerProxy>
               <hashTree>
                 <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -351,8 +348,6 @@
                 </elementProp>
                 <stringProp name="HTTPSampler.domain"></stringProp>
                 <stringProp name="HTTPSampler.port"></stringProp>
-                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
                 <stringProp name="HTTPSampler.path">${__V(server)}/sales/getTicketTypes</stringProp>
@@ -361,8 +356,9 @@
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                 <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                 <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                <boolProp name="HTTPSampler.monitor">false</boolProp>
                 <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
               </HTTPSamplerProxy>
               <hashTree>
                 <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -383,6 +379,7 @@
                   <boolProp name="XPathExtractor.validate">false</boolProp>
                   <boolProp name="XPathExtractor.tolerant">false</boolProp>
                   <boolProp name="XPathExtractor.namespace">false</boolProp>
+                  <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
                 </XPathExtractor>
                 <hashTree/>
               </hashTree>
@@ -404,8 +401,6 @@
                 </elementProp>
                 <stringProp name="HTTPSampler.domain"></stringProp>
                 <stringProp name="HTTPSampler.port"></stringProp>
-                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
                 <stringProp name="HTTPSampler.path">${__V(server)}/sales/getDocumentTypes</stringProp>
@@ -414,8 +409,9 @@
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                 <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                 <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                <boolProp name="HTTPSampler.monitor">false</boolProp>
                 <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
               </HTTPSamplerProxy>
               <hashTree>
                 <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -445,6 +441,7 @@
                   <boolProp name="XPathExtractor.validate">false</boolProp>
                   <boolProp name="XPathExtractor.tolerant">false</boolProp>
                   <boolProp name="XPathExtractor.namespace">false</boolProp>
+                  <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
                 </XPathExtractor>
                 <hashTree/>
               </hashTree>
@@ -468,8 +465,6 @@
                   </elementProp>
                   <stringProp name="HTTPSampler.domain"></stringProp>
                   <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
                   <stringProp name="HTTPSampler.path">${__V(server)}/sales/getFreeSeats</stringProp>
@@ -478,8 +473,9 @@
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                   <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                   <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <boolProp name="HTTPSampler.monitor">false</boolProp>
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
                   <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -491,6 +487,7 @@
                     <boolProp name="XPathExtractor.validate">false</boolProp>
                     <boolProp name="XPathExtractor.tolerant">false</boolProp>
                     <boolProp name="XPathExtractor.namespace">false</boolProp>
+                    <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
                   </XPathExtractor>
                   <hashTree/>
                   <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Есть места" enabled="true">
@@ -529,6 +526,10 @@
 			&lt;gender&gt;MALE&lt;/gender&gt;&#xd;
 		&lt;/Passenger&gt;&#xd;
 	&lt;/Sale&gt;	&#xd;
+	&lt;Agent&gt;&#xd;
+		&lt;name&gt;Test&lt;/name&gt;&#xd;
+		&lt;inn&gt;2345678901&lt;/inn&gt;&#xd;
+	&lt;/Agent&gt;	&#xd;
 &lt;/BookOrderRequest&gt;</stringProp>
                         <stringProp name="Argument.metadata">=</stringProp>
                       </elementProp>
@@ -536,8 +537,6 @@
                   </elementProp>
                   <stringProp name="HTTPSampler.domain"></stringProp>
                   <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
                   <stringProp name="HTTPSampler.path">${__V(server)}/sales/bookOrder</stringProp>
@@ -546,8 +545,9 @@
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                   <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                   <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <boolProp name="HTTPSampler.monitor">false</boolProp>
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
                   <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -559,6 +559,7 @@
                     <boolProp name="XPathExtractor.validate">false</boolProp>
                     <boolProp name="XPathExtractor.tolerant">false</boolProp>
                     <boolProp name="XPathExtractor.namespace">false</boolProp>
+                    <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
                   </XPathExtractor>
                   <hashTree/>
                 </hashTree>
@@ -578,8 +579,6 @@
                   </elementProp>
                   <stringProp name="HTTPSampler.domain"></stringProp>
                   <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
                   <stringProp name="HTTPSampler.path">${__V(server)}/sales/getOrder</stringProp>
@@ -588,8 +587,9 @@
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                   <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                   <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <boolProp name="HTTPSampler.monitor">false</boolProp>
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
                   <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -610,6 +610,7 @@
                     <boolProp name="XPathExtractor.validate">false</boolProp>
                     <boolProp name="XPathExtractor.tolerant">false</boolProp>
                     <boolProp name="XPathExtractor.namespace">false</boolProp>
+                    <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
                   </XPathExtractor>
                   <hashTree/>
                   <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
@@ -621,7 +622,7 @@
                     <boolProp name="XPath.namespace">false</boolProp>
                   </XPathAssertion>
                   <hashTree/>
-                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Страна" enabled="true">
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Страна" enabled="false">
                     <boolProp name="XPath.negate">false</boolProp>
                     <stringProp name="XPath.xpath">/GetOrderResponse/Body/Ticket/Passenger/citizenshipISO2/text()=&apos;RU&apos;</stringProp>
                     <boolProp name="XPath.validate">false</boolProp>
@@ -658,8 +659,6 @@
                   </elementProp>
                   <stringProp name="HTTPSampler.domain"></stringProp>
                   <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
                   <stringProp name="HTTPSampler.path">${__V(server)}/sales/updateTicket</stringProp>
@@ -668,8 +667,9 @@
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                   <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                   <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <boolProp name="HTTPSampler.monitor">false</boolProp>
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
                   <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -684,6 +684,9 @@
                         <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
 &lt;ConfirmOrderRequest&gt;&#xd;
 	&lt;orderId&gt;${orderId}&lt;/orderId&gt;&#xd;
+	&lt;Agent&gt;&#xd;
+		&lt;inn&gt;2345678901&lt;/inn&gt;&#xd;
+	&lt;/Agent&gt;&#xd;
 &lt;/ConfirmOrderRequest&gt;</stringProp>
                         <stringProp name="Argument.metadata">=</stringProp>
                       </elementProp>
@@ -691,8 +694,6 @@
                   </elementProp>
                   <stringProp name="HTTPSampler.domain"></stringProp>
                   <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
                   <stringProp name="HTTPSampler.path">${__V(server)}/sales/confirmOrder</stringProp>
@@ -701,8 +702,9 @@
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                   <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                   <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <boolProp name="HTTPSampler.monitor">false</boolProp>
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
                   <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -723,6 +725,7 @@
                     <boolProp name="XPathExtractor.validate">false</boolProp>
                     <boolProp name="XPathExtractor.tolerant">false</boolProp>
                     <boolProp name="XPathExtractor.namespace">false</boolProp>
+                    <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
                   </XPathExtractor>
                   <hashTree/>
                   <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
@@ -744,6 +747,7 @@
                         <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
 &lt;CancelTicketRequest&gt;&#xd;
 	&lt;ticketId&gt;${ticketId}&lt;/ticketId&gt;&#xd;
+	&lt;Agent&gt;&lt;inn&gt;1234567890&lt;/inn&gt;&lt;/Agent&gt;&#xd;
 &lt;/CancelTicketRequest&gt;</stringProp>
                         <stringProp name="Argument.metadata">=</stringProp>
                       </elementProp>
@@ -751,18 +755,17 @@
                   </elementProp>
                   <stringProp name="HTTPSampler.domain"></stringProp>
                   <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
-                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
                   <stringProp name="HTTPSampler.path">${__V(server)}/sales/cancelTicket</stringProp>
                   <stringProp name="HTTPSampler.method">POST</stringProp>
                   <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                   <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                   <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <boolProp name="HTTPSampler.monitor">false</boolProp>
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
                   <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -807,8 +810,6 @@
                   </elementProp>
                   <stringProp name="HTTPSampler.domain"></stringProp>
                   <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
                   <stringProp name="HTTPSampler.path">${__V(server)}/sales/getFreeSeats</stringProp>
@@ -817,8 +818,9 @@
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                   <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                   <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <boolProp name="HTTPSampler.monitor">false</boolProp>
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
                   <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -830,6 +832,7 @@
                     <boolProp name="XPathExtractor.validate">false</boolProp>
                     <boolProp name="XPathExtractor.tolerant">false</boolProp>
                     <boolProp name="XPathExtractor.namespace">false</boolProp>
+                    <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
                   </XPathExtractor>
                   <hashTree/>
                   <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Есть места" enabled="true">
@@ -875,8 +878,6 @@
                   </elementProp>
                   <stringProp name="HTTPSampler.domain"></stringProp>
                   <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
                   <stringProp name="HTTPSampler.path">${__V(server)}/sales/bookOrder</stringProp>
@@ -885,8 +886,9 @@
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                   <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                   <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <boolProp name="HTTPSampler.monitor">false</boolProp>
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
                   <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -898,6 +900,7 @@
                     <boolProp name="XPathExtractor.validate">false</boolProp>
                     <boolProp name="XPathExtractor.tolerant">false</boolProp>
                     <boolProp name="XPathExtractor.namespace">false</boolProp>
+                    <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
                   </XPathExtractor>
                   <hashTree/>
                 </hashTree>
@@ -917,8 +920,6 @@
                   </elementProp>
                   <stringProp name="HTTPSampler.domain"></stringProp>
                   <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
                   <stringProp name="HTTPSampler.path">${__V(server)}/sales/getOrder</stringProp>
@@ -927,8 +928,9 @@
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                   <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                   <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <boolProp name="HTTPSampler.monitor">false</boolProp>
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
                   <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -949,6 +951,7 @@
                     <boolProp name="XPathExtractor.validate">false</boolProp>
                     <boolProp name="XPathExtractor.tolerant">false</boolProp>
                     <boolProp name="XPathExtractor.namespace">false</boolProp>
+                    <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
                   </XPathExtractor>
                   <hashTree/>
                   <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
@@ -960,7 +963,7 @@
                     <boolProp name="XPath.namespace">false</boolProp>
                   </XPathAssertion>
                   <hashTree/>
-                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Страна" enabled="true">
+                  <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Страна" enabled="false">
                     <boolProp name="XPath.negate">false</boolProp>
                     <stringProp name="XPath.xpath">/GetOrderResponse/Body/Ticket/Passenger/citizenshipISO2/text()=&apos;RU&apos;</stringProp>
                     <boolProp name="XPath.validate">false</boolProp>
@@ -997,8 +1000,6 @@
                   </elementProp>
                   <stringProp name="HTTPSampler.domain"></stringProp>
                   <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
                   <stringProp name="HTTPSampler.path">${__V(server)}/sales/updateTicket</stringProp>
@@ -1007,8 +1008,9 @@
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                   <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                   <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <boolProp name="HTTPSampler.monitor">false</boolProp>
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
                   <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -1023,6 +1025,10 @@
                         <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
 &lt;ConfirmOrderRequest&gt;&#xd;
 	&lt;orderId&gt;${orderId}&lt;/orderId&gt;&#xd;
+		&lt;Agent&gt;&#xd;
+		&lt;inn&gt;2345678901&lt;/inn&gt;&#xd;
+		&lt;name&gt;Test&lt;/name&gt;&#xd;
+	&lt;/Agent&gt;&#xd;
 &lt;/ConfirmOrderRequest&gt;</stringProp>
                         <stringProp name="Argument.metadata">=</stringProp>
                       </elementProp>
@@ -1030,8 +1036,6 @@
                   </elementProp>
                   <stringProp name="HTTPSampler.domain"></stringProp>
                   <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
                   <stringProp name="HTTPSampler.path">${__V(server)}/sales/confirmOrder</stringProp>
@@ -1040,8 +1044,9 @@
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                   <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                   <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <boolProp name="HTTPSampler.monitor">false</boolProp>
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
                   <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -1062,6 +1067,7 @@
                     <boolProp name="XPathExtractor.validate">false</boolProp>
                     <boolProp name="XPathExtractor.tolerant">false</boolProp>
                     <boolProp name="XPathExtractor.namespace">false</boolProp>
+                    <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
                   </XPathExtractor>
                   <hashTree/>
                   <XPathAssertion guiclass="XPathAssertionGui" testclass="XPathAssertion" testname="Статус договора" enabled="true">
@@ -1083,6 +1089,9 @@
                         <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
 &lt;ReturnTicketRequest&gt;&#xd;
 	&lt;ticketId&gt;${ticketId}&lt;/ticketId&gt;&#xd;
+		&lt;Agent&gt;&#xd;
+		&lt;inn&gt;2345678901&lt;/inn&gt;&#xd;
+	&lt;/Agent&gt;&#xd;
 &lt;/ReturnTicketRequest&gt;</stringProp>
                         <stringProp name="Argument.metadata">=</stringProp>
                       </elementProp>
@@ -1090,8 +1099,6 @@
                   </elementProp>
                   <stringProp name="HTTPSampler.domain"></stringProp>
                   <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                   <stringProp name="HTTPSampler.protocol"></stringProp>
                   <stringProp name="HTTPSampler.contentEncoding"></stringProp>
                   <stringProp name="HTTPSampler.path">${__V(server)}/sales/returnTicket</stringProp>
@@ -1100,8 +1107,9 @@
                   <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
                   <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
                   <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-                  <boolProp name="HTTPSampler.monitor">false</boolProp>
                   <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
                 </HTTPSamplerProxy>
                 <hashTree>
                   <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="Это XML?" enabled="false"/>
@@ -1236,5 +1244,9 @@
         <hashTree/>
       </hashTree>
     </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
   </hashTree>
 </jmeterTestPlan>
