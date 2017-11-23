@@ -602,4 +602,35 @@
             </xs:complexContent>
         </xs:complexType>
     </xs:element>
+
+    <xs:element name="GetFreeSeatsRequest">
+        <xs:complexType>
+            <xs:choice>
+                <xs:sequence>
+                    <xs:element name="tripId" type="IDType" minOccurs="1"/>
+                    <xs:element name="dispatchStationId" type="IDType" minOccurs="1"/>
+                    <xs:element name="arrivalStationId" type="IDType" minOccurs="1"/>
+                </xs:sequence>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetFreeSeatsResponse">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="AbstractResponse">
+                    <xs:sequence>
+                        <xs:element name="Body">
+                            <xs:complexType>
+                                <xs:choice>
+                                    <xs:element name="Seat" type="Seat" maxOccurs="unbounded"/>
+                                </xs:choice>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
 </xs:schema>

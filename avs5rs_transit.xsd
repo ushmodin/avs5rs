@@ -253,11 +253,6 @@
                     <xs:element name="dispatchStationUid" type="UidType"/>
                     <xs:element name="arrivalStationUid" type="UidType"/>
                 </xs:sequence>
-                <xs:sequence>
-                    <xs:element name="tripId" type="IDType" minOccurs="1"/>
-                    <xs:element name="dispatchStationId" type="IDType" minOccurs="1"/>
-                    <xs:element name="arrivalStationId" type="IDType" minOccurs="1"/>
-                </xs:sequence>
             </xs:choice>
         </xs:complexType>
     </xs:element>
@@ -270,7 +265,6 @@
                         <xs:element name="Body">
                             <xs:complexType>
                                 <xs:choice>
-                                    <xs:element name="Seat" type="Seat" maxOccurs="unbounded"/>
                                     <xs:element name="TransitSeat" type="TransitSeat" maxOccurs="unbounded"/>
                                 </xs:choice>
                             </xs:complexType>
@@ -306,7 +300,7 @@
             <xs:element name="seatNum" type="xs:int" minOccurs="1"/>
             <xs:element name="Agent" type="Agent"/>
             <xs:element name="price" type="xs:decimal"/>
-            <xs:element name="passengerGone" type="xs:boolean"/>
+            <xs:element name="isGone" type="xs:boolean"/>
         </xs:sequence>
     </xs:complexType>
 
