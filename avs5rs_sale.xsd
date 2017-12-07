@@ -342,6 +342,7 @@
                 <xs:element name="dispatchStationId" type="IDType" minOccurs="1"/>
                 <xs:element name="arrivalStationId" type="IDType" minOccurs="1"/>
                 <xs:element name="date" type="xs:date" minOccurs="1"/>
+                <xs:element name="Agent" type="Agent" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -370,6 +371,7 @@
                 <xs:element name="tripId" type="IDType" minOccurs="1"/>
                 <xs:element name="dispatchStationId" type="IDType" minOccurs="1"/>
                 <xs:element name="arrivalStationId" type="IDType" minOccurs="1"/>
+                <xs:element name="Agent" type="Agent" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
