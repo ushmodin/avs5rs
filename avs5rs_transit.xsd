@@ -300,7 +300,7 @@
             <xs:element name="seatNum" type="xs:int" minOccurs="1"/>
             <xs:element name="Agent" type="Agent"/>
             <xs:element name="price" type="xs:decimal"/>
-            <xs:element name="isGone" type="xs:boolean"/>
+            <xs:element name="isGone" type="xs:boolean" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
