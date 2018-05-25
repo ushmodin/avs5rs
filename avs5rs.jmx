@@ -30,22 +30,22 @@
           <collectionProp name="Arguments.arguments">
             <elementProp name="password" elementType="Argument">
               <stringProp name="Argument.name">password</stringProp>
-              <stringProp name="Argument.value">${__P(password)}</stringProp>
+              <stringProp name="Argument.value">etraffic2008</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="date" elementType="Argument">
               <stringProp name="Argument.name">date</stringProp>
-              <stringProp name="Argument.value">${__P(date)}</stringProp>
+              <stringProp name="Argument.value">2017-11-25</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="user" elementType="Argument">
               <stringProp name="Argument.name">user</stringProp>
-              <stringProp name="Argument.value">${__P(user)}</stringProp>
+              <stringProp name="Argument.value">web_www</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="server" elementType="Argument">
               <stringProp name="Argument.name">server</stringProp>
-              <stringProp name="Argument.value">${__P(server)}</stringProp>
+              <stringProp name="Argument.value">http://localhost:8080/soap/rs</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
@@ -274,7 +274,7 @@
               <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="Получить все ID рейсов" enabled="true">
                 <stringProp name="XPathExtractor.default"></stringProp>
                 <stringProp name="XPathExtractor.refname">tripIds</stringProp>
-                <stringProp name="XPathExtractor.xpathQuery">/SearchTripsResponse/Body/Trip/id</stringProp>
+                <stringProp name="XPathExtractor.xpathQuery">/SearchTripsResponse/Body/Trip[status=&apos;ON_SALE&apos;]/id</stringProp>
                 <boolProp name="XPathExtractor.validate">false</boolProp>
                 <boolProp name="XPathExtractor.tolerant">false</boolProp>
                 <boolProp name="XPathExtractor.namespace">false</boolProp>
