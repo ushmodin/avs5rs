@@ -25,7 +25,7 @@
 
     <xs:simpleType name="InnType">
         <xs:restriction base="xs:string">
-            <xs:maxLength value="12"/>
+            <xs:maxLength value="16"/>
             <xs:minLength value="10"/>
         </xs:restriction>
     </xs:simpleType>
@@ -258,6 +258,14 @@
             <xs:element name="fees" type="xs:decimal" minOccurs="1"/>
             <xs:element name="repayment" type="xs:decimal" minOccurs="0"/>
             <xs:element name="insuranceInfo" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="TicketFare">
+        <xs:sequence>
+            <xs:element name="ticketId" type="IDType" minOccurs="1"/>
+            <xs:element name="fare" type="xs:decimal" minOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -511,6 +519,7 @@
             <xs:sequence>
                 <xs:element name="orderId" type="IDType" minOccurs="1"/>
                 <xs:element name="Agent" type="Agent" minOccurs="1"/>
+                <xs:element name="TicketFare" maxOccurs="unbounded" type="TicketFare"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
